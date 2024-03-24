@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form id="form">
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="nombre" class="form-label"><h3>Encuesta para el examen resonancia magnetica de:</h3></label>
+                            <input type="text" class="form-control" id="tipoResonancia">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="nombrePaciente" class="form-label">Nombre Paciente</label>
+                            <input type="text" class="form-control" id="nombrePaciente">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="rut" class="form-label">Rut</label>
+                            <input type="text" class="form-control" id="rut">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <input type="number" class="form-control" id="telefono">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correo">
+                       </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="fechaExamen" class="form-label">Fecha de Examen</label>
+                            <input type="calendar" class="form-control only-date" id="fechaExamen" placeholder="dd-mm-yyyy">
+                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fechaNaciemiento" class="form-label">Fecha de Nacimiento</label>
+                            <input type="text" class="form-control" id="fechaNaciemiento" placeholder="dd-mm-yyyy">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="peso" class="form-label">Peso</label>
+                            <input type="number" class="form-control" id="peso">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estatura" class="form-label">Estatura</label>
+                            <input type="text" class="form-control" id="estatura">
+                        </div>
+                    </div>
+                     <b>El examemn de RM utiliza magnetismo y radiofrecuencias para su realización, complete las siguientes preguntas
+                        para evitar situaciones de riesgo y para guiar clinicamente el examen:
+                     </b>
+                     <br><br>
+                     <b>Contraindicaciones absolutas</b>
+                     <br><br>
+                    <div class="row mb-3">
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Es portador de marcapaso, desfribilador o estimuladores nerviosos?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="marcapasos" class="form-check-input col-md-2" id="marcapaso-si" value="1">
+                                    <label for="marcapaso-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="marcapasos" class="form-check-input col-md-2" id="marcapaso-no" value="0">
+                                    <label for="marcapaso-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Posee implante coclear?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="coclear" class="form-check-input col-md-2" id="coclear-si" value="1">
+                                    <label for="coclear-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="coclear" class="form-check-input col-md-2" id="coclear-no" value="0">
+                                    <label for="coclear-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Tiene un embarazo de menos de 3 meses?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="embarazoMenor" class="form-check-input col-md-2" id="embarazoMenor3-si" value="1">
+                                    <label for="embarazoMenor3-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="embarazoMenor" class="form-check-input col-md-2" id="embarazoMenor3-no" value="0">
+                                    <label for="embarazoMenor3-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Posee algún clip quirúrjico de aneurisma cerebral?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="aneurisma" class="form-check-input col-md-2" id="aneurisma-si" value="1">
+                                    <label for="aneurisma-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="aneurisma" class="form-check-input col-md-2" id="aneurisma-no" value="0">
+                                    <label for="aneurisma-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Posee una bomba de medicamentos?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="bombaMedicamentos" class="form-check-input col-md-2" id="bombaMedicamentos-si" value="1">
+                                    <label for="bombaMedicamentos-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="bombaMedicamentos" class="form-check-input col-md-2" id="bombaMedicamentos-no" value="0">
+                                    <label for="bombaMedicamentos-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Posee alguna válvula cardiaca artificial?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="valulaCardiaca" class="form-check-input col-md-2" id="valulaCardiaca-si" value="1">
+                                    <label for="valulaCardiaca-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="valulaCardiaca" class="form-check-input col-md-2" id="valulaCardiaca-no" value="0">
+                                    <label for="valulaCardiaca-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Alguna vez tuvo una lesión causada por la introducción
+                                    de un objeto metálico en el ojo?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="lesionOjo" class="form-check-input col-md-2" id="lesionOjo-si" value="1">
+                                    <label for="lesionOjo-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="lesionOjo" class="form-check-input col-md-2" id="lesionOjo-no" value="0">
+                                    <label for="lesionOjo-no" class="form-check-label">No</label>
+                                </div>
+                                <label for="" class="form-label col-md-10">de la pregunta anterior. ¿El objero fue retirado?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="retirado" class="form-check-input col-md-2" id="retirado-si" value="1">
+                                    <label for="retirado-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="retirado" class="form-check-input col-md-2" id="retirado-no" value="0">
+                                    <label for="retirado-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <br><br>
+                    <b>Contraindicaciones relativas</b>
+                    <br><br>
+                   <div class="row mb-3">
+                       <div class="col-md-12">            
+                           <div>
+                               <label for="" class="form-label col-md-10">¿Es claustrofóbico o posee movimientos involuntarios?</label>
+                               <div class="form-check form-check-inline">
+                                   <input type="radio" name="claustrofobico" class="form-check-input col-md-2" id="claustrofobico-si" value="1">
+                                   <label for="claustrofobico-si" class="form-check-label">Si</label>
+                               </div>
+                               <div class="form-check form-check-inline">
+                                   <input type="radio" name="claustrofobico" class="form-check-input col-md-2" id="claustrofobico-no" value="0">
+                                   <label for="claustrofobico-no" class="form-check-label">No</label>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-12">            
+                           <div>
+                               <label for="" class="form-label col-md-10">¿Fue sometido a cirugías cardíacas hace menos de 3 meses?</label>
+                               <div class="form-check form-check-inline">
+                                   <input type="radio" name="cirugiaCardiaca" class="form-check-input col-md-2" id="cirugiaCardiaca-si" value="1">
+                                   <label for="cirugiaCardiaca-si" class="form-check-label">Si</label>
+                               </div>
+                               <div class="form-check form-check-inline">
+                                   <input type="radio" name="cirugiaCardiaca" class="form-check-input col-md-2" id="cirugiaCardiaca-no" value="0">
+                                   <label for="cirugiaCardiaca-no" class="form-check-label">No</label>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-12">            
+                           <div>
+                               <label for="" class="form-label col-md-10">¿Posee implantes metálicos? (Clips, prótesis, válvulas, esquirlas, tornillos, etc)</label>
+                               <div class="form-check form-check-inline">
+                                   <input type="radio" name="implantes" class="form-check-input col-md-2" id="implantes-si" value="1">
+                                   <label for="implantes-si" class="form-check-label">Si</label>
+                               </div>
+                               <div class="form-check form-check-inline">
+                                   <input type="radio" name="implantes" class="form-check-input col-md-2" id="implantes-no" value="0">
+                                   <label for="implantes-no" class="form-check-label">No</label>
+                               </div>
+                           </div>
+                       </div>
+                       <br><br>
+                       <div class="col-md-12">
+                        <label for="material" class="form-label">Indique año y material de la prótesis</label>
+                        <input type="text" class="form-control" id="material">
+                        <label for="molestias" class="form-label">¿Que molestias presenta que lo motivaron consultar a un medico?, ¿Desde cuando las presenta?</label>
+                        <input type="text" class="form-control" id="molestias">
+                        <label for="patologia" class="form-label">¿Tiene alguna patología de base? (ej. Diabetes, Hipertensión, problemas a la tiroides, alergias, asma, etc)</label>
+                        <input type="text" class="form-control" id="patologia">
+                        <label for="medicamento" class="form-label">¿Toma algún medicamento habitualmente?, Cuál?, ¿Para?</label>
+                        <input type="text" class="form-control" id="medicamento">
+                        <label for="cirujiaComun" class="form-label">¿Se ha reslizado alguna cirujía?, ¿Porqué?, ¿Cuando?</label>
+                        <input type="text" class="form-control" id="cirujiaComun">
+                        <br>
+                        <div class="col-md-12">            
+                            <div>
+                                <label for="" class="form-label col-md-10">¿Trajo algún examen relacionado con la patología?</label>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="examenRelacionado" class="form-check-input col-md-2" id="examenRelacionado-si" value="1">
+                                    <label for="examenRelacionado-si" class="form-check-label">Si</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" name="examenRelacionado" class="form-check-input col-md-2" id="examenRelacionado-no" value="0">
+                                    <label for="examenRelacionado-no" class="form-check-label">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <label for="cualExamen" class="form-label">¿Cuál? (Ej. Rx, T.C, RM, ecografía)</label>
+                        <input type="text" class="form-control" id="cualExamen">                       
+                    </div>    
+                   </div>
+                   <br>
+                   
+                </div>
+                <br><br>
+                </div>
+                   <br>
+                    <span class="d-block pb-2">Firma paciente o representante legal</span>
+                    <div class="signature mb-2" style="width: 100%; height: 120px;">
+                        <canvas id="signature-canvas"
+                            style="border: 1px dashed red; width: 100%; height: 120px;"></canvas>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary mb-4">Generar PDF</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
